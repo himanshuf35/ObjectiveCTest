@@ -8,47 +8,40 @@
 
 #import <Foundation/Foundation.h>
 #import "Fraction.h"
+#import "Human.h"
 
+//Declaration of a function
+Fraction * setHuman(Human * human, int age, int height, int weigth, int footLength);
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-//        int sum;
-//        int sub;
-//        sub = 87 - 15;
-//        sum = 50 + 35;
+        
 //        NSLog(@"sum is %i and sub is %i", sum, sub); //NSLog (Function to print) in %i i represents integer type of value
-//        Fraction *myFraction;
         
-        //Create an instance of Fraction
-//        myFraction = [Fraction alloc];
-//
-//        //Setting values of num & den by Fraction methods
-//        [myFraction setNumerator: 1];
-//        [myFraction setDenomintaor: 3];
-//
-//        //Display the fraction using fraction print method
-//        [myFraction print];
-        
+        //Two Fraction and two Human instances are created using alloc
         Fraction *myFraction1 = [Fraction alloc];
-//        [Fraction updateCount];
         Fraction *myFraction2 = [Fraction alloc];
-//        [Fraction updateCount];
         
-        myFraction1.numerator = 1;
-        myFraction1.denominator = 3;
-        myFraction2.numerator = 1;
-        myFraction2.denominator = 2;
+        Human *firstHuman = [Human alloc];
+        Human *secondHuman = [Human alloc];
         
-//        [myFraction1 set: 1];
-//        [myFraction1 setDenomintaor: 2];
-//        [myFraction2 setNumerator: 1];
-//        [myFraction2 setDenomintaor: 3];
+        //Human propeties are set
+        myFraction1 = setHuman(firstHuman, 24, 170, 60, 10);
+        myFraction2 = setHuman(secondHuman, 25, 180, 70, 10);
         
-        BOOL isFraction = ([myFraction1 getFraction] * [myFraction2 getFraction]) > 1;
-        
-        NSLog(@"is this number not a fraction? %hhd", isFraction);
-        NSLog(@"No of fraction classes are %i", [Fraction getCount]);
-        
-    return 0;
+        //Human BMI is calculate using Fraction
+        NSLog(@"BMI is %f", [myFraction1 getFraction]);
+        NSLog(@"BMI is %f", [myFraction2 getFraction]);
+        NSLog(@"Human count is %i", [Human getPopulation]);
+return 0;
 }
+}
+
+//Definition of the function
+Fraction * setHuman(Human * human, int age, int height, int weigth, int footLength){
+    [human setAge: age andHeight: height];
+    [human setOtherDetails :weigth :footLength];
+    Fraction *humanBMI = [Fraction alloc];
+    humanBMI.numerator = [human getBMINume];
+    humanBMI.denominator = [human getBMIDenom];
+    return humanBMI;
 }
