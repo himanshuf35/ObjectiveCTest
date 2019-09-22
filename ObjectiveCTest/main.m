@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Fraction.h"
 #import "Human.h"
+#import "Male.h"
+#import "Female.h"
 
 //Declaration of a function
 Fraction * setHuman(Human * human, int age, int height, int weigth, int footLength);
+void distinctHumans(void);
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
@@ -24,11 +28,13 @@ int main(int argc, const char * argv[]) {
         Human *firstHuman = [Human alloc];
         Human *secondHuman = [Human alloc];
         
-        //Human propeties are set
-        myFraction1 = setHuman(firstHuman, 24, 170, 60, 10);
-        myFraction2 = setHuman(secondHuman, 25, 180, 70, 10);
+        distinctHumans();
         
-        //Human BMI is calculate using Fraction
+        //Human properties are set
+//        myFraction1 = setHuman(firstHuman, 24, 170, 60, 10);
+//        myFraction2 = setHuman(secondHuman, 25, 180, 70, 10);
+        
+        //Human BMI is calculated using Fraction
         NSLog(@"BMI is %f", [myFraction1 getFraction]);
         NSLog(@"BMI is %f", [myFraction2 getFraction]);
         NSLog(@"Human count is %i", [Human getPopulation]);
@@ -45,3 +51,15 @@ Fraction * setHuman(Human * human, int age, int height, int weigth, int footLeng
     humanBMI.denominator = [human getBMIDenom];
     return humanBMI;
 }
+
+void distinctHumans() {
+    Male *male = [Male alloc];
+    Female *female = [Female alloc];
+    [male setMalePhyChar:40 :15: 17];
+    [male setAge:24 andHeight:180];
+    [male setOtherDetails:70 :9] ;
+    [female setFemalePhyChar:36 :36: 24];
+    [female setAge:25 andHeight:165];
+    [female setOtherDetails:54 :7];
+}
+
