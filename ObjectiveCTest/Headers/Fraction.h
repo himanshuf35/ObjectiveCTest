@@ -24,6 +24,7 @@
 
 -(void) print;
 -(float) getFraction;
+-(Fraction *) add:(Fraction *)number;
 +(void) updateCount;
 +(int) getCount;
 

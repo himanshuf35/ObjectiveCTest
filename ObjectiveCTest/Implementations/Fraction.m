@@ -15,12 +15,19 @@ static int fractionCount = 0;
 
 -(void) print
 {
-    NSLog(@"%i %i", numerator, denominator);
+    NSLog(@"%i/%i", numerator, denominator);
 }
 
 -(float) getFraction {
     [Fraction updateCount];
     return ((float) numerator / (float) denominator);
+}
+
+-(Fraction *) add:(Fraction *)number{
+    Fraction *addedFraction = [Fraction alloc];
+    addedFraction.numerator = (self.numerator * number.denominator) + (number.numerator * self.denominator);
+    addedFraction.denominator = self.denominator * number.denominator;
+    return addedFraction;
 }
 
 +(void) updateCount {
