@@ -19,11 +19,13 @@ void distinctHumans(void);
 void print(id);
 void complexAndFractions(void);
 void humanAndDescendants(void);
+void tryCatchFinally(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        distinctHumans();
-        complexAndFractions();
+//        complexAndFractions();
+        tryCatchFinally();
     }
 }
 
@@ -55,8 +57,7 @@ void distinctHumans() {
 
 //id is used to refer to or store any type of Object
 void print(id obj) {
-    SEL printSelector = @selector(print);
-    [obj performSelector:printSelector];
+    [obj performSelector:@selector(print)];
 }
 
 void complexAndFractions() {
@@ -97,8 +98,22 @@ void humanAndDescendants() {
     myFraction2 = setHuman(secondHuman, 25, 180, 70, 10);
     
     //Human BMI is calculated using Fraction
-    NSLog(@"BMI is %f", [myFraction1 getFraction]);
+    NSLog(@"BMI s %f", [myFraction1 getFraction]);
     NSLog(@"BMI is %f", [myFraction2 getFraction]);
     NSLog(@"Human count is %i", [Human getPopulation]);
+}
+
+void tryCatchFinally() {
+    //Basic use of try, catch and finally
+    Human *aHuman = [Human alloc];
+    @try{
+        [aHuman performSelector:@selector(run)];
+    }
+    @catch(NSException *exception){
+        NSLog(@"Caught %@ %@", [exception name], [exception reason]);
+    }
+    @finally{
+        NSLog(@"In Finally Block");
+    }
 }
 
